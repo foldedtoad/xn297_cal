@@ -1,7 +1,7 @@
 # xn297_rf_cal
-XN297 (nRF24L01 clone) decoder for RF_CAL field
+XN297 (nRF24L01 clone) decoder/editor for RF_CAL field
 
-## Decoding the RF_CAL register for the XN297 2.4GHz radio
+## Decoding and Editing the RF_CAL register for the XN297 2.4GHz radio
 Below is an example of how to run this utility.  
 There are two input files:
   * The text file which has its first line the 7 hexadecimal numerics for the RF_CAL params to be decoded.  
