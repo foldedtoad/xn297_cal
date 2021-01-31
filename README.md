@@ -1,13 +1,13 @@
-# xn297_rf_cal
-XN297 (nRF24L01 clone) decoder/editor for RF_CAL field
+# xn297_cal
+XN297 (nRF24L01 clone) decoder/editor for [BB/RF/DEMOD]_CAL field
 
-## Decoding and Editing the RF_CAL register for the XN297 2.4GHz radio
+## Decoding and Editing the various xx_CAL registers for the XN297 2.4GHz radio
 Below is an example of how to run this utility.  
 There are two input files:
-  * The text file which has its first line the 7 hexadecimal numerics for the RF_CAL params to be decoded.  
+  * The text file which has its first line the hexadecimal numerics for the xx_CAL params to be decoded.  
   Example: The "rf_cal.txt" file which contains the following.
   ```
-  0xC9 0x9A 0xB0 0x61 0xBB 0xAB 0x9C
+      0xC9 0x9A 0xB0 0x61 0xBB 0xAB 0x9C
   ```
   * The JSON file which contains the JSON dictionary describing the bit-field layout of the RF_CAL register.
   Example: see the rf_cal.json file.
@@ -19,7 +19,7 @@ After a field is modified, the whole RF_CAL register is echoed again, showing th
 To exit edit process, type "quit", which will then display the complete 7 hexadecimal numeric parameter set.
 
 ```
-xn297_rf_cal$ ./run.sh 
+xn297_cal$ ./xn297_cal.py rf_cal.txt rf_cal.json 
 input:  0xC9 0x9A 0xB0 0x61 0xBB 0xAB 0x9C
 binary(56): 00111001110101011101110110000110000011010101100110010011
 EN_STBII_RX_2TX 1
