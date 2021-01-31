@@ -26,11 +26,12 @@ class XN297_Cal:
     #--------------------------------------------------------------------------
     #
     #--------------------------------------------------------------------------
-    def __init__(self, dict_file, binary):
+    def __init__(self, dict_file, binary, count):
 
         self.binary = reverse(binary)
         self.dict_file = dict_file
         self.dict = None
+        self.hex_count = count
 
     #--------------------------------------------------------------------------
     #
@@ -94,7 +95,7 @@ class XN297_Cal:
 
         self.compile_binary()
 
-        for n in range(0,7):
+        for n in range(0, self.hex_count):
             bits = self.binary[(n*8)+0] + self.binary[(n*8)+1] + \
                    self.binary[(n*8)+2] + self.binary[(n*8)+3] + \
                    self.binary[(n*8)+4] + self.binary[(n*8)+5] + \
@@ -136,6 +137,7 @@ def main():
 
     args = parser.parse_args()
 
+    count = 0
     binary = ""
 
     #
@@ -148,6 +150,7 @@ def main():
 
             hexnumerics = line.split()
             for hexnumeric in hexnumerics:
+                count += 1
                 binary += "{0:08b}".format(int(hexnumeric, base=16))
     except:
         pass
@@ -155,7 +158,7 @@ def main():
     #
     # Create instance of XN297_Cal processor and run it.
     #
-    cal = XN297_Cal(args.json_dict_file, binary)
+    cal = XN297_Cal(args.json_dict_file, binary, count)
 
     cal.read_dictonary()
     cal.parse_parms()
