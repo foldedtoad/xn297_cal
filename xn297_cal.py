@@ -71,6 +71,12 @@ class XN297_Cal:
             bits = XN297_Cal.__dict__[key]
             print("{0:15} {1}".format(key, bits))
 
+    #--------------------------------------------------------------------------
+    #
+    #--------------------------------------------------------------------------
+    def get_bitfield_width(self, key):
+
+        return len(XN297_Cal.__dict__[key])
 
     #--------------------------------------------------------------------------
     # Compile a new binary (bit-array) from class variables.
@@ -169,8 +175,8 @@ def main():
         key = raw_input("Enter field name > ").upper()
         if key == "QUIT":
             break
-        bitnum = len(cal.__dict__[key])
-        inbits = raw_input("Enter " + str(bitnum) + " bits > ")
+        bits = cal.get_bitfield_width(key)
+        inbits = raw_input("Enter " + str(bits) + " bits > ")
 
         cal.modify_bitfield(key, inbits)
         cal.print_parms()
