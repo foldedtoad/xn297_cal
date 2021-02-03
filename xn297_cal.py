@@ -152,7 +152,9 @@ def main():
     try:
         with open(args.cal_parms_file, 'r') as cal_file:
             line = cal_file.readline()
-            print("input:  {0}".format(line.strip()))
+            line = line.strip()
+            line = line.replace(',', '').replace(':', '')
+            print("input:  {0}".format(line))
 
             hexnumerics = line.split()
             for hexnumeric in hexnumerics:
